@@ -270,6 +270,8 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
     {
         switch ( $dbType )
         {
+            case 'boolean':
+                return 'bool';
             case 'integer':
             case 'timestamp':
                 return 'int';
