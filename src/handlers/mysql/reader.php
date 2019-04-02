@@ -62,6 +62,7 @@ class ezcDbSchemaMysqlReader extends ezcDbSchemaCommonSqlReader implements ezcDb
 
         'char' => 'text',
         'varchar' => 'text',
+        'enum' => 'text',
         'binary' => 'blob',
         'varbinary' => 'blob',
         'tinyblob' => 'blob',
