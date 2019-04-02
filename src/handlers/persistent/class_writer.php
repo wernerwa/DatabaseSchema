@@ -9,9 +9,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -35,15 +35,15 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
 {
 
     /**
-     * If files should be overwritten. 
-     * 
+     * If files should be overwritten.
+     *
      * @var boolean
      */
     private $overwrite;
 
     /**
-     * Class prefix. 
-     * 
+     * Class prefix.
+     *
      * @var string
      */
     private $prefix;
@@ -60,7 +60,7 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
         $this->overwrite = $overwrite;
         $this->prefix    = ( $classPrefix === null ) ? "" : $classPrefix;
     }
-    
+
     /**
      * Returns what type of schema writer this class implements.
      * This method always returns ezcDbSchema::FILE
@@ -82,12 +82,12 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
      *
      * @throws ezcBaseFileNotFoundException If the given directory could not be
      *                                      found.
-     * @throws ezcBaseFilePermissionException If the given directory is not 
+     * @throws ezcBaseFilePermissionException If the given directory is not
      *                                        writable.
      */
     public function saveToFile( $dir, ezcDbSchema $dbSchema )
     {
-        if ( !is_dir( $dir ) ) 
+        if ( !is_dir( $dir ) )
         {
             throw new ezcBaseFileNotFoundException( $dir, 'directory' );
         }
@@ -109,7 +109,7 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
      * Writes the list of attributes.
      *
      * @param resource $file
-     * @param array $fields 
+     * @param array $fields
      * @return void
      */
     private function writeAttributes( $file, $fields )
@@ -127,7 +127,7 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
 
     /**
      * Writes the setState() method for the class.
-     * 
+     *
      * @param resource $file
      * @return void
      */
@@ -150,7 +150,7 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
 
     /**
      * Writes the getState() method for the class.
-     * 
+     *
      * @param resource $file
      * @param array $fields The table fields.
      * @return void
@@ -192,7 +192,7 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
         fwrite( $file, "class {$this->prefix}$tableName\n" );
         fwrite( $file, "{\n" );
 
-        // attributes 
+        // attributes
         $this->writeAttributes( $file, $table->fields );
         fwrite( $file, "\n" );
 
@@ -209,12 +209,12 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
      * Open a file for writing a PersistentObject definition to.
      * This method opens a file for writing a PersistentObject definition to
      * and writes the basic PHP open tag to it.
-     * 
+     *
      * @param string $dir  The diretory to open the file in.
      * @param string $name The table name.
      * @return resource(file) The file resource used for writing.
      *
-     * @throws ezcBaseFileIoException 
+     * @throws ezcBaseFileIoException
      *         if the file to write to already exists.
      * @throws ezcBaseFilePermissionException
      *         if the file could not be opened for writing.
@@ -242,7 +242,7 @@ class ezcDbSchemaPersistentClassWriter implements ezcDbSchemaFileWriter
      * Close a file where a PersistentObject definition has been written to.
      * This method closes a file after writing a PersistentObject definition to
      * it and writes the PHP closing tag to it.
-     * 
+     *
      * @param resource(file) $file The file resource to close.
      * @return void
      */
