@@ -125,11 +125,11 @@ class ezcDbSchemaPersistentWriter implements ezcDbSchemaFileWriter
             fwrite( $file, "\$def->idProperty->propertyName = '$fieldName';\n" );
             if ( $field->autoIncrement )
             {
-                fwrite( $file, "\$def->idProperty->generator    = new ezcPersistentGeneratorDefinition( 'ezcPersistentSequenceGenerator' );\n" );
+                fwrite( $file, "\$def->idProperty->generator    = new ezcPersistentGeneratorDefinition('ezcPersistentSequenceGenerator');\n" );
             }
             else
             {
-                fwrite( $file, "\$def->idProperty->generator    = new ezcPersistentGeneratorDefinition( 'ezcPersistentManualGenerator' );\n" );
+                fwrite( $file, "\$def->idProperty->generator    = new ezcPersistentGeneratorDefinition('ezcPersistentManualGenerator');\n" );
                 fwrite( $file, "\$def->idProperty->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;\n" );
             }
         }
@@ -256,8 +256,6 @@ class ezcDbSchemaPersistentWriter implements ezcDbSchemaFileWriter
     private function closeFile( $file )
     {
         fwrite( $file, "return \$def;\n" );
-        fwrite( $file, "\n" );
-        fwrite( $file, "?>\n" );
         fclose( $file );
     }
 
